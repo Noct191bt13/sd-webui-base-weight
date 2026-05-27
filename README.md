@@ -29,17 +29,6 @@ effective = base + (explicit_weight - 1.0)
 | `BASE=0.8 cat BASE=1.2 dog` | cat=**0.8**, dog=**1.2** |
 | `BASE=0.5 cat, (dog:0.5)` | cat=**0.5**, dog=0.5+(0.5-1.0)=**0.0** |
 
-### With `AND`
-
-`BASE` is scoped to its `AND` segment so it never breaks conditioning boundaries:
-
-```
-cat AND BASE=0.8 dog AND BASE=1.2 bird
-```
-→ cat=1.0, dog=0.8, bird=1.2
-
-If you want BASE across segments, write it in each one.
-
 ## Examples
 
 Before — applying the same weight to every tag:
@@ -67,5 +56,3 @@ BASE=0.9 1girl, solo, looking_at_viewer, smile, blue_eyes
 
 - **From the WebUI**: go to Extensions → Install from URL, paste `https://github.com/Noct191bt13/sd-webui-base-weight.git`
 - **Manually**: `git clone https://github.com/Noct191bt13/sd-webui-base-weight.git` inside your `extensions/` folder
-
-Restart the WebUI. No settings, no dependencies.
